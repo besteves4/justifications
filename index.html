@@ -150,16 +150,17 @@
 
         <h3 id="justifications">Justifications</h3>
         <figure>
-            <img src="./img/justifications.png" alt="Justification concepts for the non-fulfilment, delay or exercise of rights.">
-            <figcaption>Justification concepts for the non-fulfilment, delay or exercise of rights</figcaption>
+            <img src="./img/justifications.png" alt="Justification concepts for the non-fulfillment, delay or exercise of rights.">
+            <figcaption>Justification concepts for the non-fulfillment, delay or exercise of rights</figcaption>
         </figure>
         <p>
-            A collection of justifications for the non-fulfilment, delay of fulfilment and exercise of rights were modelled as subclasses of the 
+            A collection of justifications for the non-fulfillment, delay of fulfillment and exercise of rights were modelled as subclasses of the 
             <code>NonPerformanceJustification</code>, <code>DelayJustification</code> and <code>ExerciseJustification</code> concepts.
         </p>
         <ul>
             <li><code>NonPerformanceJustification</code>: Justification to reject or not complete a process</li>
             <ul>
+                <li><code>NotRequiredJustification</code>: JJustification to reject or not complete a process as it does not apply</li>
                 <li><code>RightNonFulfilmentJustification</code>: Justification to reject or not complete a right exercising activity</li>
             </ul>
             <li><code>DelayJustification</code>: Justification to delay a process</li>
@@ -171,6 +172,16 @@
                 <li><code>RightExerciseJustification</code>: Justification to exercise or iniciate a right exercising activity</li>
             </ul>
         </ul>
+
+        <p>The modelled concepts for each type of justification are defined below and the used GDPR clause is also introduced.</p>
+
+        <p>The following set of concepts can be used to reject a certain process or activity (<code>NotRequiredJustification</code>):</p>
+        <ul>
+            <li><code>JNotReq-TOMSafeguard</code>: Justification that the process is not required as it is safeguarded by appropriate technical and organisational measures <b>[Art.34-3-a GDPR]</b></li>
+            <li><code>JNotReq-UnlikelyRightsImpact</code>: Justification that the process is not required as it is considered to be an unlikely impact on rights and freedoms <b>[Art.A34-3-b GDPR]</b></li>
+            <li><code>JNotReq-DisproportionateEffort</code>: Justification that the process is not required as it would require a disproportionate effort <b>[Art.34-3-c GDPR]</b></li>
+        </ul>
+
         <p>The following set of concepts can be used to express generic justifications for the non-fulfilment of rights exercising:</p>
         <ul>
             <li><code>RejectIdentityVerificationFailure</code>: Justification that the process could not be fulfilled or was not successfull because identity verification failed</li>
