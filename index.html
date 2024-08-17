@@ -35,19 +35,62 @@
 
 <body>
     <section id="abstract">
+        <p>
+            This document outlines the identified concepts required to justify the exercising of data subject's rights,
+            including justifications to delay or not fulfil such rights.
+        </p>
     </section>
 
     <section id="overview">
         <h2>Overview</h2>
-        <p>
-            This document outlines the identified requirements for the expression of information related to the exercising of data subject rights.
-            In particular, the main objectives include expressing information about
-        </p>
+        
+        <p>The motivation for this work is derived from the need to create and maintain records of the exercising
+        of data subject's rights under the GDPR.
+        This work was developed (and is already integrated) within the context of the DPVCG and was started with 
+        the main objectives of indicating</p>
         <ul>
-            <li>what rights exist (in particular within the framework of the GDPR)</li>
+            <li>what rights exist</li>
             <li>where such rights can be exercised</li>
-            <li>what information needs to be recorded and maintained when a concrete instance of a right is being/was exercised</li>
+            <li>what information needs to be recorded and maintained when a concrete instance of a right is being/was exercise</li>
         </ul>
+        <p>
+            As such, the flows of information between a data subject and a data controller for the
+            exercising of a right request, according to the GDPR, were analysed to extract the relevant concepts to be recorded.
+            <a href="#DSR">Figure 1</a> illustrates these flows.
+        </p>
+        <p>
+            After sending a notice to the data subject
+            confirming that the request was received, the controller must be able to identify the data subject in
+            order to proceed with the request (Article 12.2, second sentence). If the controller cannot
+            identify the data subject, then the data subject must provide additional information to enable the
+            controller to identify them (Article 11.2). If the controller disregards the request or has
+            a justification for not fulfilling the right, then the data subject does not receive any information
+            related to the right request (Article 12.2, second sentence). In case the controller has
+            a justification to delay the request due to its complexity or a high number of requests, then
+            the controller has a 2-month extension to fulfil its duty (Article 12.3, second sentence).
+            Moreover, in case the request is unfounded or excessive, the controller can charge a fee and the
+            data subject will get the information once this fee is paid (Article 12.5, first sentence). As
+            it is visible by the diagram, at any point if the data controller does not fulfil its duty then a GDPR
+            breach occurs and the data subject does not receive their requested information.
+        </p>
+        <figure>
+            <img id="DSR" src="./img/GDPR-DSR.png" alt="Flow diagram of GDPR data subject rights exercising" width="100%">
+            <figcaption>Flow diagram of GDPR data subject rights exercising, according to Article 12.</figcaption>
+        </figure>
+        <p>
+            As will be explored in the next section, from the analysis of these flows of information,
+            a set of high-level concepts was proposed and adopted by the 
+            <a href="https://www.w3.org/groups/cg/dpvcg/" target="_blank">DPVCG</a> 
+            (general concepts on Rights are modelled in the main DPV specification at
+            <a href="https://w3id.org/dpv#vocab-rights" target="_blank">https://w3id.org/dpv#vocab-rights</a> 
+            and GDPR-specific ones in the GDPR extension at 
+            <a href="https://w3id.org/dpv/legal/eu/gdpr#vocab-rights" target="_blank">https://w3id.org/dpv/legal/eu/gdpr#vocab-rights</a>
+            ).
+        </p>
+        <p>
+            Missing from these set of initial concepts adopted by the CG were terms to justify the fulfillment, non-fulfillment and 
+            delay in rights exercising. These shall be the main contribution presented in this document.
+        </p>
     </section>
 
     <section id="concepts">
