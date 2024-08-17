@@ -1,2 +1,535 @@
+PREFIX bibo: <http://purl.org/ontology/bibo/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dpv: <https://w3id.org/dpv#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX sw: <http://www.w3.org/2003/06/sw-vocab-status/ns#>
+PREFIX vann: <http://purl.org/vocab/vann/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-dcterms:source art 23.1j
+PREFIX justif: <https://w3id.org/people/besteves/justifications#>
+
+# ------------ Ontology Metadata ------------------ #
+
+<https://w3id.org/people/besteves/justifications> a owl:Ontology ;
+	dcterms:title "Justifications for Rights Exercising"@en ;
+	vann:preferredNamespacePrefix "justif" ;
+    vann:preferredNamespaceUri "https://w3id.org/people/besteves/justifications#"^^xsd:string ;
+	rdfs:label "Justifications for Rights Exercising - A DPV extension to record machine-readable rights exercising"@en ;
+	owl:versionInfo "0.1"^^xsd:string ;
+	owl:versionIRI <https://w3id.org/people/besteves/justifications/0.1> ;
+	dcterms:created "2024-02-07"^^xsd:date ;
+	dcterms:issued "2024-02-07"^^xsd:date ;
+	dcterms:creator "Beatriz Esteves" ;
+	dcterms:publisher "Beatriz Esteves" ;
+	dcterms:abstract "This specification outlines the identified concepts required to justify the exercising of data subject's rights, including justifications to delay or not fulfil such rights."@en ;
+    dcterms:description "This specification outlines the identified concepts required to justify the exercising of data subject's rights, including justifications to delay or not fulfil such rights."@en ;
+	rdfs:comment "This is the RDF ontology for the Justifications for Rights Exercising."@en ;
+	dcterms:bibliographicCitation "Cite this vocabulary as: Esteves, B. (2024). Justifications for Rights Exercising 0.1. https://doi.org/xxxxx"@en ;
+	bibo:doi "xxxxx"@en ;
+	foaf:logo <https://besteves4.github.io/odrl-access-control-profile/assets/folder.ico> ;
+	sw:term_status "stable"@en ;
+	dcterms:source <https://w3id.org/dpv> ;
+	dcterms:license <https://dalicc.net/licenselibrary/CC-BY-4.0> .
+
+# ------------ Base Concepts ------------------ #
+
+justif:NonPerformanceJustification a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Non performance justification"@en ;
+    rdfs:subClassOf dpv:Justification ;
+    skos:definition "Justification to reject or not complete a process"@en ;
+    rdfs:comment "Justification to reject or not complete a process"@en .
+
+justif:NotRequiredJustification a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Not required justification"@en ;
+    rdfs:subClassOf dpv:NonPerformanceJustification ;
+    skos:definition "Justification to reject or not complete a process as it does not apply"@en ;
+    rdfs:comment "Justification to reject or not complete a process as it does not apply"@en .
+
+justif:RightNonFulfilmentJustification a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification"@en ;
+    rdfs:subClassOf dpv:NonPerformanceJustification ;
+    skos:definition "Justification to reject or not complete a right exercising activity"@en ;
+    rdfs:comment "Justification to reject or not complete a right exercising activity"@en .
+
+justif:DelayJustification a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Delay justification"@en ;
+    rdfs:subClassOf dpv:Justification ;
+    skos:definition "Justification to delay a process"@en ;
+    rdfs:comment "Justification to delay a process"@en .
+
+justif:RightFulfilmentDelayJustification a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right fulfilment delay justification"@en ;
+    rdfs:subClassOf dpv:DelayJustification ;
+    skos:definition "Justification to delay a right exercising activity"@en ;
+    rdfs:comment "Justification to delay a right exercising activity"@en .
+
+justif:ExerciseJustification a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Exercise justification"@en ;
+    rdfs:subClassOf dpv:Justification ;
+    skos:definition "Justification to exercise or initiate a process"@en ;
+    rdfs:comment "Justification to exercise or initiate a process"@en .
+
+justif:RightExerciseJustification a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right exercise justification"@en ;
+    rdfs:subClassOf dpv:ExerciseJustification ;
+    skos:definition "Justification to exercise or iniciate a right exercising activity"@en ;
+    rdfs:comment "Justification to exercise or iniciate a right exercising activity"@en .
+
+# ------------ Justification not required Concepts ------------------ #
+		
+justif:JNotReq-TOMSafeguard a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Justification not required - Safeguarded by TOM"@en ;
+    rdfs:subClassOf dpv:NotRequiredJustification ;
+    skos:definition "Justification that the process is not required as it is safeguarded by appropriate technical and organisational measures"@en ;
+    rdfs:comment "Justification that the process is not required as it is safeguarded by appropriate technical and organisational measures"@en ;
+    dcterms:source "GDPR A34-3-a"@en .
+
+justif:JNotReq-UnlikelyRightsImpact a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Justification not required - Unlikely rights impact"@en ;
+    rdfs:subClassOf dpv:NotRequiredJustification ;
+    skos:definition "Justification that the process is not required as it is considered to be an unlikely impact on rights and freedoms"@en ;
+    rdfs:comment "Justification that the process is not required as it is considered to be an unlikely impact on rights and freedoms"@en ;
+    dcterms:source "GDPR A34-3-b"@en .
+
+justif:JNotReq-DisproportionateEffort a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Justification not required - Disproportionate effort"@en ;
+    rdfs:subClassOf dpv:NotRequiredJustification ;
+    skos:definition "Justification that the process is not required as it would require a disproportionate effort"@en ;
+    rdfs:comment "Justification that the process is not required as it would require a disproportionate effort"@en ;
+    dcterms:source "GDPR A34-3-c"@en .
+
+# ------------ Right non-fulfilment justification Concepts ------------------ #
+
+justif:JNonFulf-IdentityVerificationFailure a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Identity verification failure"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because identity verification failed"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because identity verification failed"@en ;
+    dcterms:source "GDPR A12-2"@en .
+
+justif:JNonFulf-ProcessExcessive a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Process excessive"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it was found to be excessive in nature"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it was found to be excessive in nature"@en ;
+    dcterms:source "GDPR A12-5"@en .
+
+justif:JNonFulf-ProcessFrivolous a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Process frivolous"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it was found to be based on frivolous reasons"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it was found to be based on frivolous reasons"@en ;
+    dcterms:source "GDPR A12-5"@en .
+
+justif:JNonFulf-ProcessMalicious a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Process malicious"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it was found to be malicious, e.g., with intent to cause disruption or harassment"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it was found to be malicious, e.g., with intent to cause disruption or harassment"@en ;
+    dcterms:source "GDPR A12-5"@en .
+
+justif:JNonFulf-ProcessUnfounded a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Process unfounded"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it was found to be based on manifestly unfounded reasons"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it was found to be based on manifestly unfounded reasons"@en ;
+    dcterms:source "GDPR A12-5"@en .
+
+justif:JNonFulf-EntityAlreadyInformed a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Entity already informed"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because the entity already has the information"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because the entity already has the information"@en ;
+    dcterms:source "GDPR A13-4, A14-5-a"@en .
+
+justif:JNonFulf-DisproportionateEffortRequired a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Disproportionate effort required"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it requires a disproportionate effort"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it requires a disproportionate effort"@en ;
+    dcterms:source "GDPR A14-5-b, A19"@en .
+
+justif:JNonFulf-ImpairObjectives a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Impair objectives"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it impairs the objectives of associated context"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it impairs the objectives of associated context"@en ;
+    dcterms:source "GDPR A14-5-b"@en .
+
+justif:JNonFulf-ImpossibleToFulfil a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Impossible to fulfil"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it is impossible to fulfil"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it is impossible to fulfil"@en ;
+    dcterms:source "GDPR A14-5-b, A19"@en .
+
+justif:JNonFulf-LegallyExempted a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Legally exempted"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it falls under legal exemption, i.e., a law allows the non-fulfilment"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it falls under legal exemption, i.e., a law allows the non-fulfilment"@en ;
+    dcterms:source "GDPR A14-5-c, A17-3-b, A22-2-b"@en .
+
+justif:JNonFulf-ConfidentialityObligation a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Confidentiality obligation"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it would compromise a confidentiality obligation"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it would compromise a confidentiality obligation"@en ;
+    dcterms:source "GDPR A14-5-d"@en .
+
+justif:JNonFulf-FreedomOfExpression a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Freedom of expression"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it would interfere with the right of freedom of expression and information of others"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it would interfere with the right of freedom of expression and information of others"@en ;
+    dcterms:source "GDPR A17-3-a"@en .
+
+justif:JNonFulf-SafeguardPublicInterest a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Safeguard public interest"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it would interfere with necessary tasks carried out for public interest"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it would interfere with necessary tasks carried out for public interest"@en ;
+    dcterms:source "GDPR A17-3-b, A20-3, A21-6, A23-1-e"@en .
+
+justif:JNonFulf-ExerciseOfficialAuthority a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Exercise official authority"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it would interfere with the exercise of official authorities"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it would interfere with the exercise of official authorities"@en ;
+    dcterms:source "GDPR A17-3-b, A20-3, A23-1-h"@en .
+
+justif:JNonFulf-SafeguardPublicHealth a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Safeguard public health"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it would interfere with necessary tasks carried out for public health reasons"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it would interfere with necessary tasks carried out for public health reasons"@en ;
+    dcterms:source "GDPR A17-3-c"@en .
+
+justif:JNonFulf-ImpairArchiving a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Impair archiving"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it impairs archiving for public interest"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it impairs archiving for public interest"@en ;
+    dcterms:source "GDPR A17-3-d"@en .
+
+justif:JNonFulf-ImpairScientificOrHistoricalResearch a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Impair scientific or historical research"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it impairs scientific or historical research"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it impairs scientific or historical research"@en ;
+    dcterms:source "GDPR A17-3-d"@en .
+
+justif:JNonFulf-ImpairStatistics a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Impair statistics"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it would interfere with official statistics"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it would interfere with official statistics"@en ;
+    dcterms:source "GDPR A17-3-d"@en .
+
+justif:JNonFulf-EstablishLegalClaim a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Establish legal claim"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it would interfere with the establishment of legal claims"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it would interfere with the establishment of legal claims"@en ;
+    dcterms:source "GDPR A17-3-e, A21-1"@en .
+
+justif:JNonFulf-ExerciseLegalClaim a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Exercise legal claim"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it would interfere with the exercise of legal claims"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it would interfere with the exercise of legal claims"@en ;
+    dcterms:source "GDPR A17-3-e, A21-1"@en .
+
+justif:JNonFulf-DefendLegalClaim a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Defend legal claim"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it would interfere with the defence of legal claims"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it would interfere with the defence of legal claims"@en ;
+    dcterms:source "GDPR A17-3-e, A21-1"@en .
+
+justif:JNonFulf-SafeguardThirdPartyRights a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Safeguard third party rights"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it would affect the rights and freedoms of others"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it would affect the rights and freedoms of others"@en ;
+    dcterms:source "GDPR A20-4, A23-1-i"@en .
+
+justif:JNonFulf-LegitimateInterest a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Legitimate interest"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because the legitimate interest of the controller overrides the interests or rights of the data subject"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because the legitimate interest of the controller overrides the interests or rights of the data subject"@en ;
+    dcterms:source "GDPR A21-1"@en .
+
+justif:JNonFulf-NecessityContractPerformance a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Necessity for contract performance"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it is necessary for the performance of a contract"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it is necessary for the performance of a contract"@en ;
+    dcterms:source "GDPR A22-2-a"@en .
+
+justif:JNonFulf-NecessityEnterContract a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Necessity to enter into contract"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it is necessary for entering into a contract"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it is necessary for entering into a contract"@en ;
+    dcterms:source "GDPR A22-2-a"@en .
+
+justif:JNonFulf-ConsentBased a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Consent based"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it is based on explicit consent"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it is based on explicit consent"@en ;
+    dcterms:source "GDPR A22-2-c"@en .
+
+justif:JNonFulf-SafeguardNationalSecurity a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Safeguard national security"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it would interfere with necessary tasks to safeguard national security"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it would interfere with necessary tasks to safeguard national security"@en ;
+    dcterms:source "GDPR A23-1-a"@en .
+
+justif:JNonFulf-SafeguardDefence a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Safeguard defence"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it would interfere with necessary tasks to safeguard defence"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it would interfere with necessary tasks to safeguard defence"@en ;
+    dcterms:source "GDPR A23-1-b"@en .
+
+justif:JNonFulf-SafeguardPublicSecurity a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Safeguard public security"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it would interfere with necessary tasks to safeguard public security"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it would interfere with necessary tasks to safeguard public security"@en ;
+    dcterms:source "GDPR A23-1-c"@en .
+
+justif:JNonFulf-PreventCriminalOffences a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Prevent criminal offences"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it would interfere with the prevention of criminal offences"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it would interfere with the prevention of criminal offences"@en ;
+    dcterms:source "GDPR A23-1-d"@en .
+
+justif:JNonFulf-InvestigateCriminalOffences a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Investigate criminal offences"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it would interfere with the investigation of criminal offences"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it would interfere with the investigation of criminal offences"@en ;
+    dcterms:source "GDPR A23-1-d"@en .
+
+justif:JNonFulf-DetectCriminalOffences a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Detect criminal offences"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it would interfere with the detection of criminal offences"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it would interfere with the detection of criminal offences"@en ;
+    dcterms:source "GDPR A23-1-d"@en .
+
+justif:JNonFulf-ProsecuteCriminalOffences a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Prosecute criminal offences"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it would interfere with the prosecution of criminal offences"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it would interfere with the prosecution of criminal offences"@en ;
+    dcterms:source "GDPR A23-1-d"@en .
+
+justif:JNonFulf-ExecuteCriminalPenalties a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Execute criminal penalties"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it would interfere with the execution of criminal penalties"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it would interfere with the execution of criminal penalties"@en ;
+    dcterms:source "GDPR A23-1-d"@en .
+
+justif:JNonFulf-SafeguardJudicialIndependence a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Safeguard judicial independence"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it would interfere with the protection of judicial independence and proceedings"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it would interfere with the protection of judicial independence and proceedings"@en ;
+    dcterms:source "GDPR A23-1-f"@en .
+
+justif:JNonFulf-PreventEthicsBreach a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Prevent ethics breach"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it would interfere with the prevention of breaches of ethics for regulated professions"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it would interfere with the prevention of breaches of ethics for regulated professions"@en ;
+    dcterms:source "GDPR A23-1-g"@en .
+
+justif:JNonFulf-InvestigateEthicsBreach a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Investigate ethics breach"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it would interfere with the investigation of breaches of ethics for regulated professions"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it would interfere with the investigation of breaches of ethics for regulated professions"@en ;
+    dcterms:source "GDPR A23-1-g"@en .
+
+justif:JNonFulf-DetectEthicsBreach a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Detect ethics breach"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it would interfere with the detection of breaches of ethics for regulated professions"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it would interfere with the detection of breaches of ethics for regulated professions"@en ;
+    dcterms:source "GDPR A23-1-g"@en .
+
+justif:JNonFulf-ProsecuteEthicsBreach a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Prosecute ethics breach"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it would interfere with the prosecution of breaches of ethics for regulated professions"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it would interfere with the prosecution of breaches of ethics for regulated professions"@en ;
+    dcterms:source "GDPR A23-1-g"@en .
+
+justif:JNonFulf-SafeguardDataSubject a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Safeguard data subject"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it would interfere with the protection of the data subject	"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it would interfere with the protection of the data subject	"@en ;
+    dcterms:source "GDPR A23-1-i"@en .
+
+justif:JNonFulf-EnforceCivilLawClaim a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right non-fulfilment justification - Enforce civil law claim"@en ;
+    rdfs:subClassOf dpv:RightNonFulfilmentJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because it would interfere with the enforcement of civil law claims"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because it would interfere with the enforcement of civil law claims"@en ;
+    dcterms:source "GDPR A23-1-j"@en .
+
+# ------------ Right fulfilment delay Concepts ------------------ #
+
+justif:JDelay-IdentityVerification a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right fulfilment delay justification - Identity verification"@en ;
+    rdfs:subClassOf dpv:RightFulfilmentDelayJustification ;
+    skos:definition "Justification that the process could not be fulfilled or was not successfull because identiy verification is required"@en ;
+    rdfs:comment "Justification that the process could not be fulfilled or was not successfull because identiy verification is required"@en ;
+    dcterms:source "GDPR A12-1, A12-6"@en .
+
+justif:JDelay-Complexity a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right fulfilment delay justification - Complexity"@en ;
+    rdfs:subClassOf dpv:RightFulfilmentDelayJustification ;
+    skos:definition "Justification that the process is delayed due to complexity in fulfilling it"@en ;
+    rdfs:comment "Justification that the process is delayed due to complexity in fulfilling it"@en ;
+    dcterms:source "GDPR A12-3"@en .
+
+justif:JDelay-HighVolume a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right fulfilment delay justification - High volume"@en ;
+    rdfs:subClassOf dpv:RightFulfilmentDelayJustification ;
+    skos:definition "Justification that the process is delayed due to high volume of similar processes required to be fulfilled"@en ;
+    rdfs:comment "Justification that the process is delayed due to high volume of similar processes required to be fulfilled"@en ;
+    dcterms:source "GDPR A12-3"@en .
+
+justif:JDelay-InformationRequirement a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right fulfilment delay justification - Information requirement"@en ;
+    rdfs:subClassOf dpv:RightFulfilmentDelayJustification ;
+    skos:definition "Justification that the process is delayed due to additional information being required"@en ;
+    rdfs:comment "Justification that the process is delayed due to additional information being required"@en ;
+    dcterms:source "GDPR A12-6"@en .
+
+# ------------ Right fulfilment delay Concepts ------------------ #	
+
+justif:JExercise-NonNecessity a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right exercise justification - Non necessity"@en ;
+    rdfs:subClassOf dpv:RightExerciseJustification ;
+    skos:definition "Justification that the process should be carried out due to non-necessity of specified context"@en ;
+    rdfs:comment "Justification that the process should be carried out due to non-necessity of specified context"@en ;
+    dcterms:source "GDPR A17-1-a, A18-1-c"@en .
+
+justif:JExercise-LackOfFurtherLegality a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right exercise justification - Lack of further legality"@en ;
+    rdfs:subClassOf dpv:RightExerciseJustification ;
+    skos:definition "Justification that the process should be carried out due to lack of further legality of legal basis to justify continuation of specified context"@en ;
+    rdfs:comment "Justification that the process should be carried out due to lack of further legality of legal basis to justify continuation of specified context"@en ;
+    dcterms:source "GDPR A17-1-b"@en .
+
+justif:JExercise-Objection a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right exercise justification - Objection"@en ;
+    rdfs:subClassOf dpv:RightExerciseJustification ;
+    skos:definition "Justification that the process should be carried out due to specified objection(s)"@en ;
+    rdfs:comment "Justification that the process should be carried out due to specified objection(s)"@en ;
+    dcterms:source "GDPR A17-1-c, A18-1-d"@en .
+
+justif:JExercise-UnlawfulActivity a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right exercise justification - Unlawful activity"@en ;
+    rdfs:subClassOf dpv:RightExerciseJustification ;
+    skos:definition "Justification that the process should be carried out due to it being an unlawful activity"@en ;
+    rdfs:comment "Justification that the process should be carried out due to it being an unlawful activity"@en ;
+    dcterms:source "GDPR A17-1-d, A18-1-b"@en .
+
+justif:JExercise-LegalObligation a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right exercise justification - Legal obligation"@en ;
+    rdfs:subClassOf dpv:RightExerciseJustification ;
+    skos:definition "Justification that the process should be carried out due to it being a legal obligation"@en ;
+    rdfs:comment "Justification that the process should be carried out due to it being a legal obligation"@en ;
+    dcterms:source "GDPR A17-1-e"@en .
+
+justif:JExercise-InformationSocietyServicesOffer a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right exercise justification - Information society services offer"@en ;
+    rdfs:subClassOf dpv:RightExerciseJustification ;
+    skos:definition "Justification that the process should be carried out due to it being related to the offer of information society services"@en ;
+    rdfs:comment "Justification that the process should be carried out due to it being related to the offer of information society services"@en ;
+    dcterms:source "GDPR A17-1-f"@en .
+
+justif:JExercise-ContestAccuracy a rdfs:Class ;
+    rdfs:isDefinedBy justif: ;
+    rdfs:label "Right exercise justification - Contest accuracy"@en ;
+    rdfs:subClassOf dpv:RightExerciseJustification ;
+    skos:definition "Justification that the process should be carried out due to the accuracy of data being contested by the data subject"@en ;
+    rdfs:comment "Justification that the process should be carried out due to the accuracy of data being contested by the data subject"@en ;
+    dcterms:source "GDPR A18-1-a"@en .
