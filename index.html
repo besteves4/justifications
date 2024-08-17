@@ -95,10 +95,6 @@
 
     <section id="concepts">
         <h2>Concepts</h2>
-        <div class="issue">
-            This is an unstable version which will be updated in 2024 as the justification concepts are still being discussed in DPVCG meetings 
-            to be integrated into DPV.
-        </div>
         <p>
             This section highlights the concepts defined in DPV for the expression of information related to the exercising of data subject rights.
             In particular, 
@@ -109,17 +105,13 @@
                 right exercise activities and records, as well as request status.
             </li>
             <li>
-                <a href="#justifications">Justifications</a> refer to a collection of justification concepts for the the non-fulfilment, 
-                delay of fulfilment and exercise of rights, which can be provided in a DPV justifications extension.
-            </li>
-            <li>
-                <a href="#gdpr">GDPR-specific justifications</a> refer to a collection of justification concepts associated with GDPR clauses 
-                for the the non-fulfilment, delay of fulfilment and exercise of rights, which can be provided in DPV-GDPR.
+                <a href="#justifications">Justifications</a> refer to a collection of generic justification concepts for the the non-fulfillment, 
+                delay of fulfillment and exercise of rights, which can be provided in a DPV justifications extension, based on GDPR clauses.
             </li>
         </ul>
         <h3 id="base">Base concepts</h3>
         <figure>
-            <img src="https://w3id.org/dpv/media/rights.png" alt="Core concepts of DPV's rights taxonomy" width="100%">
+            <img id="rights" src="https://w3c.github.io/dpv/1.0/diagrams/rights.png" alt="Core concepts of DPV's rights taxonomy" width="100%">
             <figcaption>Core concepts of DPV's rights taxonomy</figcaption>
         </figure>
         <p>
@@ -144,11 +136,11 @@
             <a href="https://w3id.org/dpv" target="_blank">DPV</a>, including <code>RequestAccepted</code> for a request being accepted towards fulfilment, 
             <code>RequestRejected</code> for a request being rejected towards non-fulfilment or <code>RequestRequiresAction</code> for a request requiring 
             an action to be performed from another party.
-            <a href="#fig-request-status-cycle-to-track-the-status-of-rights-exercising-activities">Figure 2</a> showcases the lifecycle of the request status 
+            <a href="#status">Figure 3</a> showcases the lifecycle of the request status 
             defined in DPV.
         </p>
         <figure>
-            <img src="./img/request-status.png" alt="Request status cycle to track the status of rights exercising activities">
+            <img id="status" src="./img/request-status.png" alt="Request status cycle to track the status of rights exercising activities">
             <figcaption>Request status cycle to track the status of rights exercising activities.</figcaption>
         </figure>
         <p>
