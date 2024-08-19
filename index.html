@@ -249,6 +249,53 @@
 
     <section id="examples">
         <h2>Usage examples</h2>
+
+        <aside class="example" id="RequestRejected" title="Request rejected due to identity verification failure">
+            <p>
+                This is an example of a right exercise activity recording the justification on why a data subject
+                access request was rejected. In this case, the justification was due to a failure in the 
+                verification of the identity of the data subject.
+            </p>
+            <div class="source">
+                <pre class="nohighlight">
+                    ex:SARRejected a dpv:RightExerciseActivity, prov:Activity ;
+                        dcterms:description "Data controller rejects the request" ;
+                        dcterms:date "2023-11-02T15:57:31"^^xsd:dateTime ;
+                        prov:wasAssociatedWith ex:DataController ;
+                        dpv:hasRecipient ex:DataSubject ;
+                        dpv:hasStatus dpv:RequestRejected ;
+                        dpv:hasJustification justif:JNonFulf-IdentityVerificationFailure ;
+                        dpv:isAfter ex:SARAcknowledged .
+                </pre>
+            </div>
+        </aside>
+
+        <aside class="example" id="RequestRequiresAction" title="Request rejected due to identity verification failure">
+            <p>
+                Follow-up right exercise activity where the data controller requests further information
+                to verify the data subject's identity, using as justification that before, with the information
+                they had available, it was not possible to do so.
+            </p>
+            <div class="source">
+                <pre class="nohighlight">
+                    ex:SARRequiresAction a dpv:RightExerciseActivity, prov:Activity ;
+                        dcterms:description "Data controller requires further actions" ;
+                        dcterms:date "2023-11-02T16:09:21"^^xsd:dateTime ;
+                        prov:wasAssociatedWith ex:DataController ;
+                        dpv:hasRecipient ex:DataSubject ;
+                        dpv:hasStatus dpv:RequestRequiresAction ;
+                        dpv:hasJustification justif:JNonFulf-IdentityVerificationFailure ;
+                        dpv:hasPersonalDataHandling [
+                            dpv:hasPersonalData pd:OfficialID ;
+                            dpv:hasProcessing dpv:MakeAvailable ;
+                            dpv:hasPurpose dpv:IdentityVerification ;
+                            dpv:hasRecipientDataController ex:DataController ;
+                            dpv:isImplementedByEntity ex:DataSubjectUsername ] ;
+                        dpv:isAfter ex:SARRejected .
+                </pre>
+            </div>
+        </aside>
+
     </section>
 
 </body>
