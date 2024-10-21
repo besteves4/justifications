@@ -28,8 +28,8 @@ PREFIX justif: <https://w3id.org/people/besteves/justifications#>
 	dcterms:abstract "This specification outlines the identified concepts required to justify the exercising of data subject's rights, including justifications to delay or not fulfil such rights."@en ;
     dcterms:description "This specification outlines the identified concepts required to justify the exercising of data subject's rights, including justifications to delay or not fulfil such rights."@en ;
 	rdfs:comment "This is the RDF ontology for the Justifications for Rights Exercising."@en ;
-	dcterms:bibliographicCitation "Cite this vocabulary as: Esteves, B. (2024). Justifications for Rights Exercising 0.1. https://doi.org/xxxxx"@en ;
-	bibo:doi "xxxxx"@en ;
+	dcterms:bibliographicCitation "Cite this vocabulary as: Esteves, B. (2024). Justifications for Rights Exercising 0.1. https://doi.org/10.5281/zenodo.13958336"@en ;
+	bibo:doi "10.5281/zenodo.13958336"@en ;
 	foaf:logo <https://besteves4.github.io/odrl-access-control-profile/assets/folder.ico> ;
 	sw:term_status "stable"@en ;
 	dcterms:source <https://w3id.org/dpv> ;
